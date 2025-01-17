@@ -9,7 +9,7 @@ const Header = () => {
             <div className={'cursor-pointer  hover:scale-110 mr-4'}>
               <img
                 style={{ width: '40px', height: '40px' }}
-                src="/textures/piece.png"
+                src="/portfolio/textures/piece.png"
                 alt="one piece"
               />
             </div>

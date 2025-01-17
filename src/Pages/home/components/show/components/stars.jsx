@@ -1,5 +1,6 @@
-import React, { memo, useRef } from 'react';
+import React, { useRef } from 'react';
 import Star from '@src/Pages/home/components/show/components/star';
+import { generateUUID } from 'three/src/math/MathUtils';
 
 const getRandomValue = (min, max, offset = 0) =>
   (Math.random() * (max - min) + min + offset) * (Math.random() < 0.5 ? -1 : 1);
@@ -21,7 +22,7 @@ const createSpeedObject = () => ({
   parent: randomSpeed(),
 });
 
-const array = Array.from({ length: 15 }, (_, i) => i + 1);
+const array = Array.from({ length: 15 }, (_, i) => generateUUID());
 
 const Stars = ({ isHovered }) => {
   const groupRef = useRef();
@@ -41,6 +42,5 @@ const Stars = ({ isHovered }) => {
     </group>
   );
 };
-Stars.displayName = 'Stars';
 
-export default memo(Stars);
+export default Stars;

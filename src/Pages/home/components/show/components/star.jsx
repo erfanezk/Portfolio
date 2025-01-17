@@ -114,7 +114,8 @@ const Star = ({ position, speed, scale, plusOrMinus, isHovered }) => {
 
   const changed = useRef(false);
   const complete = useRef(false);
-  const texture = useTexture('/textures/1.jpg');
+  const texture = useTexture('/portfolio/textures/1.jpg');
+  console.log(texture, 'texture');
 
   const rotateStar = () => {
     RoundRef.current.rotation.y += plusOrMinus * speed.y;

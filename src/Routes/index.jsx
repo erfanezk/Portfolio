@@ -5,7 +5,7 @@ import MainLayout from '@src/Layout/main';
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={'portfolio'}>
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
