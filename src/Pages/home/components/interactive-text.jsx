@@ -17,7 +17,7 @@ function InteractiveText() {
         style={{
           WebkitTextStroke: `2px black`,
         }}
-        className="absolute  md:text-[4rem] drop-shadow-2xl  font-extrabold whitespace-nowrap tracking-widest -translate-y-1/2 text-white left-1/2 top-1/2 -translate-x-1/2 uppercase "
+        className="absolute  text-3xl md:text-[4rem] drop-shadow-2xl  font-extrabold whitespace-nowrap tracking-widest -translate-y-1/2 text-white left-1/2 top-1/2 -translate-x-1/2 uppercase "
       >
         i
         <span

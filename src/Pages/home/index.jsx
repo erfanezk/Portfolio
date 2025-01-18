@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Animator,
-  MoveIn,
   ScrollContainer,
   ScrollPage,
   ZoomIn,
@@ -10,12 +9,11 @@ import HomeProvider from '@src/Pages/home/context/provider';
 import InteractiveText from '@src/Pages/home/components/interactive-text';
 import Header from '@src/Pages/home/components/header';
 import Typography from '@src/Components/typography';
-import ELetter from '@src/Pages/home/components/letters/e';
 import ImageViewer from '@src/Components/image-viewer';
-import RLetter from '@src/Pages/home/components/letters/r';
 import ProductList from '@src/Pages/home/components/projects/list';
 import HomeFooter from '@src/Pages/home/components/footer';
 import Show from '@src/Pages/home/components/show';
+import Letters from '@src/Pages/home/components/letters';
 
 const HomePage = () => {
   console.log('home');
@@ -30,9 +28,9 @@ const HomePage = () => {
           </div>
         </ScrollPage>
         <ScrollPage key={'10'}>
-          <Animator animation={MoveIn(-400, 0)}>
-            <ELetter />
-          </Animator>
+          {/*<Animator animation={MoveIn(-400, 0)}>*/}
+          <Letters />
+          {/*</Animator>*/}
         </ScrollPage>
         <ScrollPage key={'4'}>
           <Animator animation={ZoomIn(1)}>
@@ -43,13 +41,6 @@ const HomePage = () => {
                 </Typography>
               </div>
               <ImageViewer url={'/portfolio/resume.png'} />
-            </div>
-          </Animator>
-        </ScrollPage>
-        <ScrollPage key={'8'}>
-          <Animator animation={MoveIn(400, 0)}>
-            <div className={'grid place-content-center'}>
-              <RLetter />
             </div>
           </Animator>
         </ScrollPage>

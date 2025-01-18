@@ -1,6 +1,5 @@
 import { useFrame } from '@react-three/fiber';
-import React, { useRef } from 'react';
-import { useTexture } from '@react-three/drei';
+import React, { memo, useCallback, useRef } from 'react';
 import * as THREE from 'three';
 
 const current = {
@@ -107,22 +106,19 @@ const decreaseToGoal = ({ complete, changed, RoundRef }) => {
   }
 };
 
-const Star = ({ position, speed, scale, plusOrMinus, isHovered }) => {
+const Star = ({ position, speed, scale, direction, isHovered, texture }) => {
   const RoundRef = useRef(null);
   const parentRef = useRef(null);
-  const geoRef = useRef(null);
 
   const changed = useRef(false);
   const complete = useRef(false);
-  const texture = useTexture('/portfolio/textures/1.jpg');
-  console.log(texture, 'texture');
 
-  const rotateStar = () => {
-    RoundRef.current.rotation.y += plusOrMinus * speed.y;
-    RoundRef.current.rotation.z += plusOrMinus * speed.z;
-    RoundRef.current.rotation.x += plusOrMinus * speed.x;
-    parentRef.current.rotation.y += plusOrMinus * speed.parent;
-  };
+  const rotateStar = useCallback(() => {
+    RoundRef.current.rotation.y += direction * speed.y;
+    RoundRef.current.rotation.z += direction * speed.z;
+    RoundRef.current.rotation.x += direction * speed.x;
+    parentRef.current.rotation.y += direction * speed.parent;
+  }, [direction, speed]);
 
   useFrame((state, delta) => {
     if (isHovered) {
@@ -142,7 +138,7 @@ const Star = ({ position, speed, scale, plusOrMinus, isHovered }) => {
     <mesh ref={parentRef}>
       <object3D>
         <mesh scale={[scale, scale, scale]} position={position} ref={RoundRef}>
-          <torusBufferGeometry ref={geoRef} args={[6, 1, 88, 5, 19]} />
+          <torusBufferGeometry args={[6, 1, 88, 5, 19]} />
           <meshStandardMaterial needsUpdate map={texture} />
         </mesh>
       </object3D>
@@ -150,4 +146,4 @@ const Star = ({ position, speed, scale, plusOrMinus, isHovered }) => {
   );
 };
 
-export default Star;
+export default memo(Star);
